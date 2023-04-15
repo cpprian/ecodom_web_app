@@ -22,6 +22,23 @@
             exit();
         }
 
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+          if (isset($_POST["usun_urzadzenie"])) {
+              $urzadzenie_id = $_POST["urzadzenie_id"];
+      
+              $conn = mysqli_connect('localhost', 'root', '', 'ecodomDB');
+              if (!$conn) {
+                  echo "Nie udało się połączyć z bazą danych: " . mysqli_connect_error();
+                  exit();
+              }
+      
+              $query = "DELETE FROM Urzadzenia WHERE id = ?;";
+              $stmt = mysqli_prepare($conn, $query);
+              mysqli_stmt_bind_param($stmt, "i", $urzadzenie_id);
+              mysqli_stmt_execute($stmt);
+          }
+      }
+
         $query = "SELECT p.id AS pid, p.nazwa AS pnazwa, u.id AS uid, u.nazwa AS unazwa, u.moc, u.harmonogram, ob.suma_kosztow
                   FROM Urzadzenia AS u LEFT JOIN Pomieszczenia AS p ON u.id_pomieszczenia = p.id 
                   LEFT JOIN (SELECT ze.id_urzadzenia, SUM(
@@ -53,7 +70,7 @@
                 echo '<p>' . round($row['suma_kosztow'], 2) . '</p>';
                 echo '</div>';
                 echo '<div class="urzadzenie_info">';
-                echo '<form method="post" action="usun_urzadzenie.php">';
+                echo '<form method="post" action="index.php">';
                 echo '<input type="hidden" name="urzadzenie_id" value="' . $row['uid'] . '">';
                 echo '<input type="submit" name="usun_urzadzenie" value="Usuń urządzenie">';
                 echo '</form>';
