@@ -15,8 +15,6 @@
       </ul>
     </div>
     <div class="content">
-      <h1>System wsparcia dla mieszkania</h1>
-
       <?php
         $conn = mysqli_connect('localhost', 'root', '', 'ecodomDB');
         if ($conn->connect_error) {
