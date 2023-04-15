@@ -14,7 +14,7 @@ CREATE TABLE ecodomDB.Urzadzenia (
     nazwa VARCHAR(255),
     moc DECIMAL(10,2),
     harmonogram VARCHAR(255),
-    FOREIGN KEY (id_pomieszczenia) REFERENCES Pomieszczenia(id)
+    FOREIGN KEY (id_pomieszczenia) REFERENCES Pomieszczenia(id) ON DELETE CASCADE
 );
 
 CREATE TABLE ecodomDB.ZuzycieEnergii (
@@ -23,7 +23,7 @@ CREATE TABLE ecodomDB.ZuzycieEnergii (
     data DATE,
     godzina TIME,
     zuzycie DECIMAL(10,2),
-    FOREIGN KEY (id_urzadzenia) REFERENCES Urzadzenia(id)
+    FOREIGN KEY (id_urzadzenia) REFERENCES Urzadzenia(id) ON DELETE CASCADE
 );
 
 CREATE TABLE ecodomDB.KosztyPradu (
@@ -56,7 +56,6 @@ VALUES  (1, 1, 'Telewizor', 100.00, 'PN-ND'),
         (4, 3, 'Oświetlenie', 50.00, 'PN-ND'),
         (5, 4, 'Grzejnik', 800.00, 'CZ-ND'),
         (6, 5, 'Oświetlenie', 100.00, 'PN-ND');
-
        
 INSERT INTO ZuzycieEnergii (id, id_urzadzenia, data, godzina, zuzycie)
 VALUES (1, 1, '2023-04-13', '20:30:00', 0.5),
@@ -75,3 +74,10 @@ VALUES  (1, 10.50, 6, 12.00),
         (3, 7.75, 5, 10.00),
         (4, 3.20, 2, 5.50),
         (5, 8.90, 7, 15.00);
+
+-- --------------------- Usuwanie tabel --------------------------------------------------
+DROP TABLE ecodomDB.ZuzycieEnergii;
+DROP TABLE ecodomDB.Urzadzenia;
+DROP TABLE ecodomDB.KosztyPradu;
+DROP TABLE ecodomDB.PanelFotowoltaiczny;
+DROP TABLE ecodomDB.Pomieszczenia;
