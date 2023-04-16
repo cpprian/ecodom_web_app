@@ -3,7 +3,7 @@ create database ecodomDB;
 
 -- --------------------- Utworzenie tabel ------------------------------------------------
 CREATE TABLE ecodomDB.Pomieszczenia (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     nazwa VARCHAR(255),
     powierzchnia DECIMAL(10,2)
 );

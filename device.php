@@ -19,19 +19,17 @@
       </ul>
     </div>
     <div class="content">
-    <?php
-      $conn = mysqli_connect('localhost', 'root', '', 'ecodomDB');
-      if ($conn->connect_error) {
-          echo "Nie udało się połączyć z bazą danych: " . mysqli_connect_error();
-          exit();
-      }
-    ?>
       <div class="add_component_form">
         <h1>Add Device</h1>
         <form method="post" action="device.php">
           <label for="id_pomieszczenia">Room Name:</label>
           <select name="Choose your room" class="filter_select add_device_select" required>
             <?php
+              $conn = mysqli_connect('localhost', 'root', '', 'ecodomDB');
+              if ($conn->connect_error) {
+                  echo "Nie udało się połączyć z bazą danych: " . mysqli_connect_error();
+                  exit();
+              }
               $query = "SELECT id, nazwa FROM Pomieszczenia;";
               $stmt = mysqli_prepare($conn, $query);
               mysqli_stmt_execute($stmt);
@@ -85,7 +83,6 @@
             exit();
         }
         if (isset($_POST['dodaj'])) {
-          var_dump($_POST);
           $id_pomieszczenia = $_POST['Choose_your_room'];
           $nazwa = $_POST['nazwa'];
           $moc = $_POST['moc'];
@@ -93,9 +90,7 @@
           $harmonogram_end = $_POST['harmonogram_end'];
           $harmonogram = $harmonogram_start . "-" . $harmonogram_end;
 
-          var_dump($id_pomieszczenia, $nazwa, $moc, $harmonogram, $harmonogram_start, $harmonogram_end);
           $query = "INSERT INTO Urzadzenia (id_pomieszczenia, nazwa, moc, harmonogram) VALUES ($id_pomieszczenia, '$nazwa', $moc, '$harmonogram');";
-          var_dump($query);
           $stmt = mysqli_prepare($conn, $query);
           mysqli_stmt_execute($stmt);
           echo "<script type='text/javascript'>alert('Dodano urządzenie!');</script>";

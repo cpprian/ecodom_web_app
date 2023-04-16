@@ -19,7 +19,37 @@
       </ul>
     </div>
     <div class="content">
-        <h1>This is a Room page. Don't panic!</h1>
+      <div class="add_component_form">
+        <h1>Add Room</h1>
+        <form method="post" action="room.php">
+          <label for="nazwa">Name:</label>
+          <input type="text" id="nazwa" name="nazwa" required><br><br>
+          <label for="surface_area">Surface Area:</label>
+          <input type="number" id="area" name="area" step="0.01" required><br><br>
+          <button type="submit" name="dodaj" class="icon_button" title="Dodaj">
+            <i class="fas fa-plus-circle"></i>
+          </button>
+        </form>
+      </div>
+      <?php
+        $conn = mysqli_connect('localhost', 'root', '', 'ecodomDB');
+        if ($conn->connect_error) {
+            echo "Nie udało się połączyć z bazą danych: " . mysqli_connect_error();
+            exit();
+        }
+        if (isset($_POST['dodaj'])) {
+          $nazwa = $_POST['nazwa'];
+          $area = $_POST['area'];
+
+          $query = "INSERT INTO Pomieszczenia (nazwa, powierzchnia) VALUES ('$nazwa', $area);";
+          var_dump($query);
+          $stmt = mysqli_prepare($conn, $query);
+          mysqli_stmt_execute($stmt);
+          echo "<script type='text/javascript'>alert('Dodano pomieszczenia!');</script>";
+          mysqli_stmt_close($stmt);
+        }
+        mysqli_close($conn);
+      ?>
     </div>
   </div>
 </body>
