@@ -19,7 +19,7 @@
       </ul>
     </div>
     <div class="content">
-        <h1>This is a Dashboard. Don't panic!</h1>
+        <h1>This is a Device page. Don't panic!</h1>
     </div>
   </div>
 </body>

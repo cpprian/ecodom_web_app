@@ -14,6 +14,18 @@ h2 {
     margin-bottom: 1rem;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    color: #fff;
+}
+
+p, a, ul, li, i {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: #fff;
+}
+
 .container {
     display: flex;
     flex-direction: row;
@@ -86,18 +98,54 @@ h2 {
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
-    margin-left: 7rem;
-    padding: 0 0.5rem 0 0.5rem;
+    margin-left: 5rem;
+    padding: 0 .5rem 0 .5rem;
 }
 
 .urzadzenie_info i {
-    font-size: 2rem;
+    font-size: 3rem;
 }
 
 .urzadzenie_info:first-child {
     margin-left: 2rem;
+    font-size: 1.5rem;
 }
 
 .urzadzenie_info:last-child {
     margin-right: 2rem;
+}
+
+.icon_button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+  
+.icon_button:hover {
+    color: red;
+    transform: scale(1.1);
+    transition: color 0.3s ease-in-out;
+}
+  
+.icon_button i {
+    font-size: 3rem;
+}
+
+.filter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.filter form {
+    display: flex;
+    align-items: center;
+}
+
+.filter-select {
+    margin-right: 1rem;
+    padding: .5rem;
 }
