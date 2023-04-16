@@ -18,7 +18,7 @@ CREATE TABLE ecodomDB.Urzadzenia (
 );
 
 CREATE TABLE ecodomDB.ZuzycieEnergii (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     id_urzadzenia INT,
     data DATE,
     godzina TIME,
@@ -27,7 +27,7 @@ CREATE TABLE ecodomDB.ZuzycieEnergii (
 );
 
 CREATE TABLE ecodomDB.KosztyPradu (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     data DATE,
     taryfa_dzienna DECIMAL(10,2),
     taryfa_nocna DECIMAL(10,2),
@@ -35,7 +35,7 @@ CREATE TABLE ecodomDB.KosztyPradu (
 );
 
 CREATE TABLE ecodomDB.PanelFotowoltaiczny (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     powierzchnia_paneli DECIMAL(10,2),
     ilosc_paneli INT,
     pojemnosc_akumulatorow DECIMAL(10,2)

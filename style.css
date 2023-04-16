@@ -111,6 +111,11 @@ p, a, ul, li, i, label {
     font-size: 1.5rem;
 }
 
+.urzadzenie_info:nth-child(2) {
+    margin-left: 2rem;
+    font-size: 1.5rem;
+}
+
 .urzadzenie_info:last-child {
     margin-right: 2rem;
 }

@@ -115,6 +115,23 @@
             }
           }
         }
+
+        if (isset($_POST['turn_off_on'])) {
+            $idu = $_POST['id_urzadzenia'];
+            $currentDate = date("Y-m-d");
+            $currentTime = date("H:i:s");
+            var_dump($idu, $currentDate, $currentTime);
+            if (!returnIsTurnedOn($idu)) {
+               // on
+              $query = "INSERT INTO ZuzycieEnergii (id_urzadzenia, `data`, godzina, zuzycie) VALUES ($idu, '$currentDate', '$currentTime', NULL);";
+              mysqli_query($conn, $query);
+            } else {
+              // off
+              $query = "UPDATE ZuzycieEnergii set zuzycie = TIMEDIFF('$currentTime', godzina) / 10 where id_urzadzenia = $idu and zuzycie is NULL;";
+              var_dump($query);
+              mysqli_query($conn, $query);
+            }
+        }
       }
 
         $query = "SELECT p.id AS pid, p.nazwa AS pnazwa, u.id AS uid, u.nazwa AS unazwa, u.moc, u.harmonogram, ob.suma_kosztow
@@ -139,6 +156,14 @@
                 echo '<div class="urzadzenie_info">';
                 echo getIcon($row['pid']);
                 echo '<p>' . $row['unazwa'] . '</p>';
+                echo '</div>';
+                echo '<div class="urzadzenie_info">';
+                echo '<form method="post" action="all_devices.php">
+                        <input type="hidden" name="id_urzadzenia" value="' . $row['uid'] . '">
+                        <button type="submit" name="turn_off_on" class="icon_button" title="Usuń urządzenie">
+                          <i class="fas ' . getTurnedOnOffIcon($row['uid']) .'"></i>
+                        </button>
+                      </form>';
                 echo '</div>';
                 echo '<div class="urzadzenie_info">';
                 echo '<h3>Room</h3>';
@@ -187,5 +212,31 @@ function getIcon($id_pomieszczenia) {
         default:
             return '<i class="fas fa-laptop"></i>';
     }
+}
+
+function getTurnedOnOffIcon($id) {
+  switch (returnIsTurnedOn($id)) {
+    case 0:
+      return 'fa-toggle-on';
+    default:
+      return 'fas fa-toggle-off';
+  }
+}
+
+function returnIsTurnedOn($id) {
+  include 'db_connection.php';
+
+  $query = "SELECT COUNT(u.id) FROM Urzadzenia as u INNER JOIN ZuzycieEnergii as ze on u.id = ze.id_urzadzenia
+  where u.id = $id AND ze.zuzycie is NULL;";
+
+  mysqli_query($conn, $query);
+  $result = mysqli_query($conn, $query);
+  $row = mysqli_fetch_assoc($result);
+
+  if ($row['COUNT(u.id)'] == 0) {
+    return 0; // on
+  } else {
+    return 1; // off
+  }
 }
 ?>
