@@ -145,7 +145,34 @@ p, a, ul, li, i {
     align-items: center;
 }
 
-.filter-select {
-    margin-right: 1rem;
+.filter_select {
+    margin-right: 5rem;
+    padding: 1rem;
+    font-size: 1rem;
+    color: #fff; 
+    background-color: #000;
+    border: none;
+    border-radius: .5rem;
+    appearance: none; 
+    cursor: pointer;
+}
+
+.filter_select:last-child {
+    margin-right: 10rem;
+}
+
+.filter_select option {
+    font-size: 1rem;
+    background-color: #000;
+    color: #fff; 
+}
+  
+.filter button {
     padding: .5rem;
+    border-radius: .5rem;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
 }

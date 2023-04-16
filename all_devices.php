@@ -19,22 +19,35 @@
       </ul>
     </div>
     <div class="content">
+    <?php
+      $conn = mysqli_connect('localhost', 'root', '', 'ecodomDB');
+      if ($conn->connect_error) {
+          echo "Nie udało się połączyć z bazą danych: " . mysqli_connect_error();
+          exit();
+      }
+    ?>
       <div class="filter">
         <form method="post" action="all_devices.php">
-          <select name="Choose your room">
-            <option value="0">Choose your room</option>
-            <option value="1">Salon</option>
-            <option value="2">Kuchnia</option>
-            <option value="3">Sypialnia</option>
-            <option value="4">Łazienka</option>
+          <select name="Choose your room" class="filter_select">
+            <?php
+              $query = "SELECT id, nazwa FROM Pomieszczenia;";
+              $stmt = mysqli_prepare($conn, $query);
+              mysqli_stmt_execute($stmt);
+              $result = mysqli_stmt_get_result($stmt);
+
+              echo "<option value='0'>Choose your room</option>";
+              while ($row = mysqli_fetch_assoc($result)) {
+                  echo "<option value='" . $row["id"] . "'>" . $row["nazwa"] . "</option>";
+              }
+            ?>
           </select>
-          <select name="Filter by">
+          <select name="Filter by" class="filter_select">
             <option value="0">Filter by</option>
             <option value="1">Power usage</option>
             <option value="2">Electricity cost</option>
             <option value="3">Room</option>
           </select>
-          <select name="Sort by">
+          <select name="Sort by" class="filter_select">
             <option value="0">Sort by</option>
             <option value="1">Increasing</option>
             <option value="2">Decreasing</option>
@@ -45,12 +58,6 @@
         </form>
       </div>
       <?php
-        $conn = mysqli_connect('localhost', 'root', '', 'ecodomDB');
-        if ($conn->connect_error) {
-            echo "Nie udało się połączyć z bazą danych: " . mysqli_connect_error();
-            exit();
-        }
-
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
           if (isset($_POST["usun_urzadzenie"])) {
               $urzadzenie_id = $_POST["urzadzenie_id"];
@@ -65,7 +72,49 @@
               $stmt = mysqli_prepare($conn, $query);
               mysqli_stmt_bind_param($stmt, "i", $urzadzenie_id);
               mysqli_stmt_execute($stmt);
+          } 
+
+          if (isset($_POST["filtruj"])) {
+            $room = $_POST["Choose_your_room"];
+            $filter = $_POST["Filter_by"];
+            $sort = $_POST["Sort_by"];
+        
+            if ($room != 0) {
+              $query_where .= " WHERE p.id = " . $room;
+            }
+        
+            if ($filter != 0) {
+              switch ($filter) {
+                case 1:
+                  $filter_query = "u.moc";
+                  break;
+                case 2:
+                  $filter_query = "ob.suma_kosztow";
+                  break;
+                case 3:
+                  $filter_query = "pnazwa";
+                  break;
+                default:
+                  $filter_query = "";
+                  break;
+              }
+            }
+        
+            if ($sort != 0 && $filter_query != "") {
+              $sort_query = " ORDER BY ";
+              switch ($sort) {
+                case 1:
+                  $sort_query .= "$filter_query ASC";
+                  break;
+                case 2:
+                  $sort_query .= "$filter_query DESC";
+                  break;
+                default:
+                  $sort_query = "";
+                  break;
+            }
           }
+        }
       }
 
         $query = "SELECT p.id AS pid, p.nazwa AS pnazwa, u.id AS uid, u.nazwa AS unazwa, u.moc, u.harmonogram, ob.suma_kosztow
@@ -76,8 +125,12 @@
                       ELSE (kp.taryfa_nocna + kp.koszt_jednostkowy) * ze.zuzycie
                     END) AS suma_kosztow
                   FROM ZuzycieEnergii AS ze JOIN KosztyPradu AS kp ON ze.data = kp.data
-                  GROUP BY ze.id_urzadzenia) AS ob ON ob.id_urzadzenia = u.id;";
-        $result = mysqli_query($conn, $query);
+                  GROUP BY ze.id_urzadzenia) AS ob ON ob.id_urzadzenia = u.id
+                  $query_where
+                  $sort_query;";
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
 
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
@@ -109,7 +162,7 @@
                 echo '</div>';
             }
         } else {
-            echo 'Brak urządzeń w bazie danych.';
+            echo '<h1>Brak urządzeń w bazie danych.</h1>';
         }
 
         mysqli_close($conn);
