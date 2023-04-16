@@ -9,7 +9,7 @@ CREATE TABLE ecodomDB.Pomieszczenia (
 );
 
 CREATE TABLE ecodomDB.Urzadzenia (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     id_pomieszczenia INT,
     nazwa VARCHAR(255),
     moc DECIMAL(10,2),

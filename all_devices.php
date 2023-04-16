@@ -78,7 +78,7 @@
             $room = $_POST["Choose_your_room"];
             $filter = $_POST["Filter_by"];
             $sort = $_POST["Sort_by"];
-        
+
             if ($room != 0) {
               $query_where .= " WHERE p.id = " . $room;
             }
@@ -131,6 +131,7 @@
         $stmt = mysqli_prepare($conn, $query);
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
+
 
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {

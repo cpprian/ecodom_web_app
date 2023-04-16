@@ -20,7 +20,7 @@ h1, h2, h3, h4, h5, h6 {
     color: #fff;
 }
 
-p, a, ul, li, i {
+p, a, ul, li, i, label {
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     color: #fff;
@@ -175,4 +175,58 @@ p, a, ul, li, i {
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease-in-out;
+}
+
+.add_component_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    background-color: #000;
+    padding: 2rem;
+    border-radius: .5rem;
+}
+
+.add_component_form input {
+    margin-bottom: 1rem;
+    padding: .5rem;
+    font-size: 1rem;
+    color: #000; 
+    background-color: #fff;
+    border: none;
+    border-radius: .5rem;
+}
+
+.add_component_form input:last-child {
+    margin-bottom: 2rem;
+}
+
+.add_component_form button {
+    padding: .5rem;
+    border-radius: .5rem;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.add_component_form label {
+    margin-bottom: .5rem;
+    margin-right: 1rem;
+    font-size: 1.5rem;
+}
+
+.add_device_select {
+    background-color: #fff;
+    color: #000;
+}
+
+.harmonogram_form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 2rem;
+    border-radius: .5rem;
 }
