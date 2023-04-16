@@ -14,6 +14,18 @@ h2 {
     margin-bottom: 1rem;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    color: #fff;
+}
+
+p, a, ul, li, i, label {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    color: #fff;
+}
+
 .container {
     display: flex;
     flex-direction: row;
@@ -73,11 +85,153 @@ h2 {
 .urzadzenie {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
     color: #fff;
     background-color: #000;
     padding: 2rem;
     border-radius: .5rem;
     margin-bottom: 2rem;
+}
+
+.urzadzenie_info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-left: 5rem;
+    padding: 0 .5rem 0 .5rem;
+}
+
+.urzadzenie_info i {
+    font-size: 3rem;
+}
+
+.urzadzenie_info:first-child {
+    margin-left: 2rem;
+    font-size: 1.5rem;
+}
+
+.urzadzenie_info:nth-child(2) {
+    margin-left: 2rem;
+    font-size: 1.5rem;
+}
+
+.urzadzenie_info:last-child {
+    margin-right: 2rem;
+}
+
+.icon_button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+  
+.icon_button:hover {
+    color: red;
+    transform: scale(1.1);
+    transition: color 0.3s ease-in-out;
+}
+  
+.icon_button i {
+    font-size: 3rem;
+}
+
+.filter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.filter form {
+    display: flex;
+    align-items: center;
+}
+
+.filter_select {
+    margin-right: 5rem;
+    padding: 1rem;
+    font-size: 1rem;
+    color: #fff; 
+    background-color: #000;
+    border: none;
+    border-radius: .5rem;
+    appearance: none; 
+    cursor: pointer;
+}
+
+.filter_select:last-child {
+    margin-right: 10rem;
+}
+
+.filter_select option {
+    font-size: 1rem;
+    background-color: #000;
+    color: #fff; 
+}
+  
+.filter button {
+    padding: .5rem;
+    border-radius: .5rem;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.add_component_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    background-color: #000;
+    padding: 2rem;
+    border-radius: .5rem;
+}
+
+.add_component_form input {
+    margin-bottom: 1rem;
+    padding: .5rem;
+    font-size: 1rem;
+    color: #000; 
+    background-color: #fff;
+    border: none;
+    border-radius: .5rem;
+}
+
+.add_component_form input:last-child {
+    margin-bottom: 2rem;
+}
+
+.add_component_form button {
+    padding: .5rem;
+    border-radius: .5rem;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.add_component_form label {
+    margin-bottom: .5rem;
+    margin-right: 1rem;
+    font-size: 1.5rem;
+}
+
+.add_device_select {
+    background-color: #fff;
+    color: #000;
+}
+
+.harmonogram_form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 2rem;
+    border-radius: .5rem;
 }

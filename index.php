@@ -1,46 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Menu Boczne</title>
+  <title>Ecodom+</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 <body>
   <div class="container">
     <div class="menu">
-      <ul>
-        <li><a href="#"><i class="fas fa-home"></i>Strona główna</a></li>
-        <li><a href="#"><i class="fas fa-info-circle"></i>O nas</a></li>
-        <li><a href="#"><i class="fas fa-cogs"></i>Usługi</a></li>
-        <li><a href="#"><i class="fas fa-envelope"></i>Kontakt</a></li>
+    <ul>
+        <li><a href="index.php"><i class="fas fa-home"></i>Dashboard</a></li>
+        <li><a href="all_devices.php"><i class="fas fa-desktop"></i>All Devices</a></li>
+        <li><a href="#"><i class="fas fa-plug"></i>Photovoltaics</a></li>
+        <li><a href="device.php"><i class="fas fa-plus-circle"></i>Add device</a></li>
+        <li><a href="room.php"><i class="fas fa-plus-circle"></i>Add room</a></li>
       </ul>
     </div>
     <div class="content">
-      <?php
-        $conn = mysqli_connect('localhost', 'root', '', 'ecodomDB');
-        if ($conn->connect_error) {
-            echo "Nie udało się połączyć z bazą danych: " . mysqli_connect_error();
-            exit();
-        }
-
-        $query = "SELECT * FROM Urzadzenia";
-        $result = mysqli_query($conn, $query);
-
-        // Generowanie komponentów HTML na podstawie danych z bazy
-        if (mysqli_num_rows($result) > 0) {
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo '<div class="urzadzenie">';
-                echo '<h2>' . $row['nazwa'] . '</h2>';
-                echo '<p>Moc: ' . $row['moc'] . ' W</p>';
-                echo '<p>Zużycie energii: ' . $row['moc'] / 1000 . ' kWh</p>';
-                echo '<p>Harmonogram: ' . $row['harmonogram'] . '</p>';
-                echo '</div>';
-            }
-        } else {
-            echo 'Brak urządzeń w bazie danych.';
-        }
-
-        mysqli_close($conn);
-      ?>
+        <h1>This is a Dashboard. Don't panic!</h1>
     </div>
   </div>
 </body>
