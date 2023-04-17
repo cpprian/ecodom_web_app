@@ -13,7 +13,7 @@
       <ul>
         <li><a href="index.php"><i class="fas fa-home"></i>Dashboard</a></li>
         <li><a href="all_devices.php"><i class="fas fa-desktop"></i>All Devices</a></li>
-        <li><a href="#"><i class="fas fa-plug"></i>Photovoltaics</a></li>
+        <li><a href="photovoltaics.php"><i class="fas fa-plug"></i>Photovoltaics</a></li>
         <li><a href="device.php"><i class="fas fa-plus-circle"></i>Add device</a></li>
         <li><a href="room.php"><i class="fas fa-plus-circle"></i>Add room</a></li>
       </ul>
