@@ -235,3 +235,35 @@ p, a, ul, li, i, label {
     margin-top: 2rem;
     border-radius: .5rem;
 }
+
+.panel {
+    background-color: #000000;
+    border: 1px solid #3a3333;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: inline-block;
+    padding: 20px;
+    width: 450px;
+    color: #dccccc;
+    margin-left: 10px;
+}
+
+.panel h2 {
+    margin-top: 0;
+}
+
+.panel p {
+    margin-bottom: 10px;
+    font-size: 16px;
+    line-height: 0.8;
+}
+
+.panel-container {
+    display: flex;
+    align-items: center;
+}
+
+.panel-icon {
+    float: right;
+    margin-left: 10px;
+}

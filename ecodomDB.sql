@@ -38,7 +38,10 @@ CREATE TABLE ecodomDB.PanelFotowoltaiczny (
     id INT PRIMARY KEY AUTO_INCREMENT,
     powierzchnia_paneli DECIMAL(10,2),
     ilosc_paneli INT,
-    pojemnosc_akumulatorow DECIMAL(10,2)
+    pojemnosc_akumulatorow DECIMAL(10,2),
+    data_zamontowania DATE,
+    srednia_wydajnosc DECIMAL(10, 2),
+    model_panelu VARCHAR(50)
 );
 
 -- --------------------- Wstawienie danych do tabel -------------------------------------
@@ -68,12 +71,15 @@ INSERT INTO KosztyPradu (id, data, taryfa_dzienna, taryfa_nocna, koszt_jednostko
 VALUES (1, '2023-04-13', 0.25, 0.10, 0.50),
        (2, '2023-04-14', 0.30, 0.12, 0.55);
 
-INSERT INTO ecodomDB.PanelFotowoltaiczny (id, powierzchnia_paneli, ilosc_paneli, pojemnosc_akumulatorow) 
-VALUES  (1, 10.50, 6, 12.00),
-        (2, 5.25, 4, 8.50),
-        (3, 7.75, 5, 10.00),
-        (4, 3.20, 2, 5.50),
-        (5, 8.90, 7, 15.00);
+INSERT INTO ecodomDB.PanelFotowoltaiczny
+    (powierzchnia_paneli, ilosc_paneli, pojemnosc_akumulatorow, data_zamontowania, srednia_wydajnosc, model_panelu)
+VALUES
+    (20.5, 10, 100, '2022-01-01', 0.85, 'SunPower'),
+    (30.2, 15, 150, '2022-03-15', 0.78, 'LG NeON 2'),
+    (15.7, 8, 80, '2022-05-10', 0.92, 'Canadian Solar'),
+    (25.0, 12, 120, '2022-07-20', 0.80, 'Trina Solar'),
+    (18.9, 9, 90, '2022-09-05', 0.88, 'JA Solar');
+
 
 -- --------------------- Usuwanie tabel --------------------------------------------------
 DROP TABLE ecodomDB.ZuzycieEnergii;
