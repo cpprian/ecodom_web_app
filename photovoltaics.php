@@ -10,13 +10,13 @@
 <body>
 <div class="container">
     <div class="menu">
-      <ul>
-        <li><a href="index.php"><i class="fas fa-home"></i>Dashboard</a></li>
-        <li><a href="all_devices.php"><i class="fas fa-desktop"></i>All Devices</a></li>
-        <li><a href="photovoltaics.php"><i class="fas fa-plug"></i>Photovoltaics</a></li>
-        <li><a href="device.php"><i class="fas fa-plus-circle"></i>Add device</a></li>
-        <li><a href="room.php"><i class="fas fa-plus-circle"></i>Add room</a></li>
-      </ul>
+        <ul>
+            <li><a href="index.php"><i class="fas fa-home"></i>Dashboard</a></li>
+            <li><a href="all_devices.php"><i class="fas fa-desktop"></i>All Devices</a></li>
+            <li><a href="photovoltaics.php"><i class="fas fa-plug"></i>Photovoltaics</a></li>
+            <li><a href="device.php"><i class="fas fa-plus-circle"></i>Add device</a></li>
+            <li><a href="room.php"><i class="fas fa-plus-circle"></i>Add room</a></li>
+        </ul>
     </div>
     <div class="content">
         <div style="text-align: center;">
@@ -124,22 +124,22 @@
             echo '<form method="POST">';
 
             echo '<label for="model_panelu">Nazwa panelu:</label>';
-            echo '<input type="text" id="model" name="model_panelu"><br>';
+            echo '<input type="text" id="model" name="model_panelu" required><br>';
 
             echo '<label>Średnia wydajnosc:</label>';
-            echo '<input type="text" id="wyd" name="srednia_wydajnosc"><br>';
+            echo '<input type="text" id="wyd" name="srednia_wydajnosc" required><br>';
 
             echo '<label>Data zamontowania:</label>';
-            echo '<input type="text" id="dat" name="dat"><br>';
+            echo '<input type="text" id="dat" name="dat" required><br>';
 
             echo '<label>Pojemnosc akumulatorow:</label>';
-            echo '<input type="text" id="poj" name="poj"><br>';
+            echo '<input type="text" id="poj" name="poj" required><br>';
 
             echo '<label>Ilosc paneli:</label>';
-            echo '<input type="text" id="pcnt" name="pcnt"><br>';
+            echo '<input type="text" id="pcnt" name="pcnt" required><br>';
 
             echo '<label>Powierzchnia paneli</label>';
-            echo '<input type="text" id="pow" name="pow"><br>';
+            echo '<input type="text" id="pow" name="pow" required><br>';
 
             echo '<input type="submit" value="Send">';
             echo '</form>';
@@ -163,7 +163,7 @@
         // Generowanie komponentów HTML na podstawie danych z bazy
         if (mysqli_num_rows($result) > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
-                $rng = rand(0, 3);
+                $rng = rand(0, 2);
 
                 echo '<div class="panel">';
                 echo '<div class="panel-container"><h2>Panel number #' . $it . '</h2><img src="images/icon' .
