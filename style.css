@@ -1,7 +1,9 @@
 body {
     padding: 0;
     margin: 0;
-    background-color: #aaa;
+    background-color:  #484040;
+	  overflow-y: scroll;//przewijanie
+
 }
 
 h1 {
@@ -31,6 +33,7 @@ p, a, ul, li, i, label {
     flex-direction: row;
     width: 100vw;
     height: 100vh;
+
 }
   
 .menu {
@@ -266,4 +269,185 @@ p, a, ul, li, i, label {
 .panel-icon {
     float: right;
     margin-left: 10px;
+}
+.chart-labels {
+  display: flex;
+   margin-bottom: 20px;
+}
+ 
+.chart-label-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-right: 80px;  
+  
+}
+
+
+.chart-label {
+  font-size: 20px;
+  color: #fff;
+}
+
+.chart-label-value {
+  font-size: 35px;
+    font-weight: bold;
+  color: #fff;
+  margin-top: 10px;  
+  margin-bottom: 10px;  
+}
+.chart-label-usage-status {
+  text-align: right;
+  margin-left: auto;
+}
+
+.container2 {
+   display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.chart-status {
+  font-size: 35px;
+  color: white;
+ }
+
+.day_select {
+     padding: 1rem;
+    font-size: 1rem;
+    color: #fff; 
+    background-color: #000;
+    border: none;
+    border-radius: .5rem;
+    appearance: none; 
+    cursor: pointer;
+	text-align: center;
+}
+ 
+.room_labels{
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+
+.labe {
+	padding: 5px 10px;
+   border-radius: 5px;
+ 
+  flex-grow: 1;
+  color:white;
+  text-align:center;
+  
+}
+.labe:hover {
+  background-color: white;
+  color: black;
+}
+.add_deb {
+    display: inline-block;
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.add_deb:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+.container3 {
+   display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+.empty-space {
+  height: 20px;  
+}
+.rounded-component {
+  position: relative;
+  background-color: black;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 300px;
+  height: 200px;
+}
+
+.computer-image {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-image: url("computer.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 50px;
+  width: 50px;
+}
+
+.switch {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  height: 20px;
+  width: 40px;
+  background-color: grey;
+  border-radius: 10px;
+}
+
+.computer-text {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.computer-name {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.computer-status {
+  font-size: 12px;
+}
+
+.usage {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  color: white;
+}
+
+.usage-line {
+  height: 2px;
+  width: 50%;
+  background-color: white;
+  margin-bottom: 5px;
+}
+
+.usage-text {
+  font-weight: bold;
+  font-size: 16px;
 }
